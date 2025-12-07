@@ -1,0 +1,94 @@
+---
+title: "thirteen"
+author: "Emilie Bell"
+format:
+  html:
+    toc: true
+    toc_float: true
+    embed-resources: true
+execute:
+  warning: false
+  message: false
+---
+```{r}
+ .libPaths()
+```
+```{r}
+ .libPaths(c("/home/emiliebell_umass_edu/R/x86_64-pc-linux-gnu-library/4.5"))
+```
+## It took me a while to successfully push changes to my GitHub repository, so I ended up spending less time doing the analyses. I was able to get all of the code to work but I couldn't get it to render. After trying for a very long time, I entered eval=FALSE and inserted screenshot of the graphs instead.
+
+```{r}
+library(ggplot2)
+library(usethis)
+library(gitcreds)
+```
+
+```{r}
+.libPaths()
+
+```
+
+
+
+This created a cool looking graph, but when I tried to render, ggplot2 and GGally were giving me problems. I tried many times and many different ways to fix, but I couldn't get it to work.
+```{r, eval=FALSE}
+chem_numeric <- chem[, c("d15N", "organicd13C", "nitrogenPercent", "organicCPercent", "CNratio")]
+ggcorr(chem_numeric, label = TRUE, label_round = 2, hjust = 0.75, size = 3) 
+
+```
+# PCA Biplot: Soil Chemistry Variables
+The closer the samples are to each other, the more similar they are in terms of soil chemistry. The horizontal axis explains the most variation and the vertical axis explains the second most variation.
+```{r, eval=FALSE}
+library(factoextra)
+library(missMDA)
+chem_numeric <- chem[, c("d15N", "organicd13C", "nitrogenPercent", "organicCPercent", "CNratio")]
+summary(chem_numeric)
+any(is.na(chem_numeric))        # TRUE if there are NAs
+any(is.infinite(as.matrix(chem_numeric)))
+imputed <- imputePCA(chem_numeric)$completeObs
+chem_pca <- prcomp(imputed, scale. = TRUE)
+fviz_pca_biplot(chem_pca, repel = TRUE,
+                col.var = "steelblue", col.ind = "darkorange",
+                title = "PCA Biplot: Soil Chemistry Variables")
+
+```
+```{r}
+
+library(knitr)
+include_graphics("/home/emiliebell_umass_edu/pathogen/biplot.png")
+```
+
+
+# Scree Plot
+This plot shows how much variation each principal component explains. Each bar is a different principal component.
+```{r, eval=FALSE}
+library(factoextra)
+fviz_eig(chem_pca, addlabels = TRUE, ylim = c(0, 50))
+```
+```{r}
+
+library(knitr)
+include_graphics("/home/emiliebell_umass_edu/pathogen/scree.png")
+```
+# PCA Variable Contribution Plot
+Each arrow shows a different soil chemistry variable. The color shows how much each variable controbutes to explaining the variation in data. If it is closer to blue, it has a low contribution, and if it is closer to orange/red, it shows a higher contribution.
+```{r, eval=FALSE}
+fviz_pca_var(chem_pca, col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE)
+
+```
+
+
+```{r}
+getwd()
+```
+
+
+```{r}
+
+library(knitr)
+include_graphics("/home/emiliebell_umass_edu/pathogen/pcavariable.png")
+
+```
