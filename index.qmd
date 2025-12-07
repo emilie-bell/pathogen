@@ -1,0 +1,21 @@
+---
+title: "Emilie Bell Index"
+author: "Emilie Bell"
+format:
+  html:
+    toc: true
+    toc_float: true
+    embed-resources: true
+execute: 
+  warning: false
+  message: false
+---
+
+## About me
+
+I am a junior biology major at UMass Amherst from Arlington, Mass. I study early embryonic development in the Mager Lab and am on the Women's Rowing team.
+![My Image](images/IMG_8978.jpg)
+
+[Lab 1](https://ood.unity.rc.umass.edu/rnode/ceewater-cpu005.unity.rc.umass.edu/48151/files/Lab%201.html)
+[Lab 13](lab13.html)
+
