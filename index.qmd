@@ -16,6 +16,5 @@ execute:
 I am a junior biology major at UMass Amherst from Arlington, Mass. I study early embryonic development in the Mager Lab and am on the Women's Rowing team.
 ![My Image](images/IMG_8978.jpg)
 
-[Lab 1](https://ood.unity.rc.umass.edu/rnode/ceewater-cpu005.unity.rc.umass.edu/48151/files/Lab%201.html)
-[Lab 13](https://ood.unity.rc.umass.edu/rnode/cpu001.unity.rc.umass.edu/23748/files/pathogen/thirteen.html)
+[Lab 13](https://emilie-bell.github.io/pathogen/thirteen.html)
 
